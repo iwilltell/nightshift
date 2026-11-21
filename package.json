@@ -1,0 +1,19 @@
+{
+  "name": "nightshift",
+  "version": "0.1.0",
+  "private": false,
+  "description": "A living pixel-art city for your GitHub profile, powered by your contributions.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest run",
+    "render": "tsx src/cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

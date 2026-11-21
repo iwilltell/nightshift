@@ -1,0 +1,39 @@
+name: Nightshift City
+description: Generate a living pixel-art city for your GitHub profile README.
+author: Nightshift contributors
+inputs:
+  username:
+    description: GitHub username to visualize.
+    required: true
+  timezone:
+    description: IANA timezone used for day/night, e.g. Asia/Kolkata.
+    required: true
+    default: UTC
+  github-token:
+    description: Token used to read contribution and repository activity.
+    required: true
+    default: ${{ github.token }}
+  output:
+    description: Output SVG path.
+    required: false
+    default: output/nightshift.svg
+runs:
+  using: composite
+  steps:
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+    - name: Install dependencies
+      shell: bash
+      run: npm install
+    - name: Build Nightshift
+      shell: bash
+      env:
+        NIGHTSHIFT_USERNAME: ${{ inputs.username }}
+        NIGHTSHIFT_TIMEZONE: ${{ inputs.timezone }}
+        NIGHTSHIFT_OUTPUT: ${{ inputs.output }}
+      run: npm run render
+branding:
+  icon: moon
+  color: blue
